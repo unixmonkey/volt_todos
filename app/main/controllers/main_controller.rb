@@ -15,7 +15,7 @@ module Main
     end
 
     def check_all
-      _todos.each{|t| t._completed = true }
+      _todos.each{|t| t.completed = true }
     end
 
     def completed
@@ -35,7 +35,7 @@ module Main
     end
 
     def completed_classname(todo)
-      'complete' if todo._completed
+      'complete' if todo.completed
     end
 
 

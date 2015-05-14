@@ -13,8 +13,8 @@
 
   <div>
     {{ if current_todo }}
-      <h2>{{ current_todo._name }}</h2>
-      <textarea>{{ current_todo._description }}</textarea>
+      <h2>{{ current_todo.name }}</h2>
+      <textarea>{{ current_todo.description }}</textarea>
     {{ end }}
   </div>
 
@@ -32,10 +32,10 @@
         e-click="params._index = index"
         class="{{ selected_classname(todo) }}">
         <td>
-          <input type="checkbox" checked="{{ todo._completed }}">
+          <input type="checkbox" checked="{{ todo.completed }}">
         </td>
         <td class="{{ completed_classname(todo) }}">
-          {{ todo._name }}
+          {{ todo.name }}
         </td>
         <td>
           <button e-click="todo.destroy">&times;</button>
