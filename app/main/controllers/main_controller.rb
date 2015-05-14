@@ -14,6 +14,22 @@ module Main
       page._new_todo = ''
     end
 
+    def check_all
+      _todos.each{|t| t._completed = true }
+    end
+
+    def completed
+      _todos.count(&:_completed)
+    end
+
+    def incomplete
+      _todos.size - completed
+    end
+
+    def percent_complete
+      (completed / _todos.size.to_f * 100).round
+    end
+
     def selected_classname(params_index, item_index)
       'selected' if (params_index || 0).to_i == item_index
     end
