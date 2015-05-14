@@ -16,10 +16,10 @@
     {{ _todos.each_with_index do |todo, index| }}
       <tr
         e-click="params._index = index"
-        class="{{ classname(params._index, index) }}">
+        class="{{ selected_classname(params._index, index) }}">
         <td><input type="checkbox"
           checked="{{ todo._completed }}"></td>
-        <td class="{{ if todo._completed }}complete{{ end }}">{{ todo._name }}</td>
+        <td class="{{ completed_classname(todo) }}">{{ todo._name }}</td>
         <td><button e-click="todo.destroy">&times;</button></td>
       </tr>
     {{ end }}

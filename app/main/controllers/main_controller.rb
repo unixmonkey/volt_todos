@@ -9,8 +9,12 @@ module Main
       page._new_todo = ''
     end
 
-    def classname(params_index, item_index)
+    def selected_classname(params_index, item_index)
       'selected' if (params_index || 0).to_i == item_index
+    end
+
+    def completed_classname(todo)
+      'complete' if todo._completed
     end
 
 
