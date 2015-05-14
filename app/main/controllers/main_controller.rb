@@ -1,6 +1,7 @@
 # By default Volt generates this controller for your Main component
 module Main
   class MainController < Volt::ModelController
+    before_action :require_login
     model :store
 
     def current_todo
@@ -8,26 +9,31 @@ module Main
       _todos[index]
     end
 
+    def todos
+      _todos.where(user_id: Volt.current_user_id)
+    end
+
     def add_todo
       puts 'adding a todo'
-      _todos << Todo.new( name: page._new_todo, completed: false )
+      # puts Volt.current_user_id
+      _todos << Todo.new( name: page._new_todo, completed: false, user_id: Volt.current_user_id )
       page._new_todo = ''
     end
 
     def check_all
-      _todos.each{|t| t.completed = true }
+      todos.each{|t| t.completed = true }
     end
 
     def completed
-      _todos.count(&:_completed)
+      todos.count(&:_completed)
     end
 
     def incomplete
-      _todos.size - completed
+      todos.size - completed
     end
 
     def percent_complete
-      (completed / _todos.size.to_f * 100).round
+      (completed / todos.size.to_f * 100).round
     end
 
     def selected_classname(todo)

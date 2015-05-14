@@ -2,7 +2,7 @@
   Todos
 
 <:Body>
-  <h1>{{ _todos.size }} Todos</h1>
+  <h1>{{ todos.size }} Todos</h1>
 
   <form e-submit="add_todo">
     <div class="form-group">
@@ -27,7 +27,7 @@
   </div>
 
   <table class="todo-table">
-    {{ _todos.each_with_index do |todo, index| }}
+    {{ todos.each_with_index do |todo, index| }}
       <tr
         e-click="params._index = index"
         class="{{ selected_classname(todo) }}">
