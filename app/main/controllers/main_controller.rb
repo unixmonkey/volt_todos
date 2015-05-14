@@ -30,8 +30,8 @@ module Main
       (completed / _todos.size.to_f * 100).round
     end
 
-    def selected_classname(params_index, item_index)
-      'selected' if (params_index || 0).to_i == item_index
+    def selected_classname(todo)
+      'selected' if todo == current_todo
     end
 
     def completed_classname(todo)
