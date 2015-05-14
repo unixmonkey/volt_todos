@@ -3,6 +3,11 @@ module Main
   class MainController < Volt::ModelController
     model :store
 
+    def current_todo
+      index = (params._index || 0).to_i
+      _todos[index]
+    end
+
     def add_todo
       puts 'adding a todo'
       _todos << Todo.new( name: page._new_todo, completed: false )

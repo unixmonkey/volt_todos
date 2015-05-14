@@ -12,6 +12,13 @@
     </div>
   </form>
 
+  <div>
+    {{ if current_todo }}
+      <h2>{{ current_todo._name }}</h2>
+      <textarea>{{ current_todo._description }}</textarea>
+    {{ end }}
+  </div>
+
   <table class="todo-table">
     {{ _todos.each_with_index do |todo, index| }}
       <tr
